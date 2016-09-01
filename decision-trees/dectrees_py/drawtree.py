@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 
-import dtree
+import dectrees_py.dtree as dtree
 import sys
-from PyQt4 import Qt, QtCore, QtGui
+from PyQt5.QtCore import *
+from PyQt5.QtWidgets import *
+import PyQt5.QtGui as QtGui
 
-class MyPainting(QtGui.QWidget):
+
+class MyPainting(QWidget):
     def __init__(self, parent, tree):
-        QtGui.QWidget.__init__(self, parent)
+        QWidget.__init__(self, parent)
         self.tree = tree
         self.xsize = 600
         self.ysize = 300
 
     def sizeHint(self):
-        return QtCore.QSize(self.xsize, self.ysize)
+        return QSize(self.xsize, self.ysize)
 
     def resizeEvent(self, ev):
         size = ev.size()
@@ -53,9 +56,9 @@ def draw(p, t, x, y):
     return newMid, xx+10
 
 
-class MyMainWindow( QtGui.QMainWindow ):
+class MyMainWindow( QMainWindow ):
     def __init__(self, tree):
-        QtGui.QMainWindow.__init__( self )
+        QMainWindow.__init__( self )
 
         paint = MyPainting(self, tree)
 
@@ -65,7 +68,7 @@ class MyMainWindow( QtGui.QMainWindow ):
 
 
 def drawTree(tree):
-    application = QtGui.QApplication( sys.argv )
+    application = QApplication( sys.argv )
     win = MyMainWindow(tree)
     win.show()
     sys.exit(application.exec_())

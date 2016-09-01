@@ -1,6 +1,6 @@
 import dectrees_py.monkdata as m
 import dectrees_py.dtree as dtree
-# import dectrees_py.drawtree as drawtree
+import dectrees_py.drawtree as drawtree
 import random
 
 monks = [m.monk1, m.monk2, m.monk3]
@@ -57,5 +57,7 @@ while True:
 
 print(prune_tree)
 print(prune_tree_performance)
+
+drawtree.drawTree(prune_tree)
 
             # drawtree.drawTree(prune_tree)
